@@ -24,7 +24,7 @@ Total unique cases in window: 31
 
 
 ## poisson_rate_ratio_test.py
-Takes treatment and control event counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and its 95% confidence interval.
+Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and its 95% confidence interval.
 
 ```
 python PRT_USED_v2.py 1 6
