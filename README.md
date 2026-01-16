@@ -41,3 +41,13 @@ IRR (treat/control):      0.166667
 95% CI for IRR (score): (0.026356, 1.053927)
 ====================================================
 ```
+
+## linear_regression_r2.py
+Fits a simple linear regression between the control-minus-treatment case count differences and egg count log differences and reports the coefficient of determination (R²) describing how well the linear model explains the relationship between the two variables.
+```
+python R2_csv.py GitHub_2026/2024_control-minus-treatment_vs_egg-counts.csv 
+R² = 0.8508
+```
+
+
+
