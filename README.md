@@ -22,6 +22,17 @@ Total unique cases in window: 31
 ----------------------------------------------------
 ```
 
+## Buruli ulcer exposure reconstruction from symptom onset dates.
+This script takes a case line list (symptom onset + Treatment/Control label) and a digitised incubation-period dataset (min/max ranges). It builds an empirical incubation distribution by sampling within ranges, then uses Monte Carlo back-calculation (exposure = onset − incubation) to generate inferred exposure date distributions for each study arm. Outputs include daily and weekly exposure time series, summary plots, a Gamma fit to the incubation distribution with a bootstrapped CDF band, and a simple post-period Treatment/Control rate ratio with a Monte Carlo interval.
+```
+python 1127_RR_RD_calculation_all_csv_AB_v3.py cases_csv incubation_csv
+```
+
+## Peak detection for treatment and control groups
+This script analyses the weekly exposure time series produced by the Monte Carlo back-calculation pipeline (BU_time_series_export.csv) to estimate the timing of seasonal peaks in Treatment and Control arms. For each arm and year, it applies a centred rolling mean to smooth weekly counts and defines the peak as the week with the maximum smoothed value.
+```
+python Peak_detection.py
+```
 
 ## poisson_rate_ratio_test.py
 Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and its 95% confidence interval.
