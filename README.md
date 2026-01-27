@@ -7,9 +7,17 @@ Counts human cases occurring within 650 meters of treatment and control sites ov
 
 ```
 python 650m_zone_counts.py \
-../66-MEDIAN_Inner_northwest_2024_cases_symptom_UPDATE-LAT-LON.csv \
-../Treatment_lat_lon.csv \
-../Control_lat_lon.csv \
+[cases_csv_file] \
+Treatment_lat_lon.csv \
+Control_lat_lon.csv \
+[UNIX_start_time] \
+[UNIX_end_time]
+
+# example
+python 650m_zone_counts.py \
+2024_cases.csv \
+Treatment_lat_lon.csv \
+Control_lat_lon.csv \
 1719756000 \
 1725804000
 
@@ -25,7 +33,7 @@ Total unique cases in window: 31
 ## Buruli ulcer exposure reconstruction from symptom onset dates.
 This script takes a case line list (symptom onset + Treatment/Control label) and a digitised incubation-period dataset (min/max ranges). It builds an empirical incubation distribution by sampling within ranges, then uses Monte Carlo back-calculation (exposure = onset − incubation) to generate inferred exposure date distributions for each study arm. Outputs include daily and weekly exposure time series, summary plots, a Gamma fit to the incubation distribution with a bootstrapped CDF band, and a simple post-period Treatment/Control rate ratio with a Monte Carlo interval.
 ```
-python 1127_RR_RD_calculation_all_csv_AB_v3.py cases_csv incubation_csv
+python buruli_exposure_backcalculation_montecarlo.py cases.csv Digitalization_IP_range.csv
 ```
 
 ## Peak detection for treatment and control groups
@@ -38,7 +46,10 @@ python Peak_detection.py
 Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and its 95% confidence interval.
 
 ```
-python PRT_USED_v2.py 1 6
+python PRT.py [number_of_cases_in_treatment] [number_of_cases_in_control]
+
+# example
+python PRT.py 1 6
 
 === Two-sided Poisson Likelihood-Ratio Test (LRT) ===
 LRT statistic (D):        3.962432
@@ -56,7 +67,7 @@ IRR (treat/control):      0.166667
 ## linear_regression_r2.py
 Fits a simple linear regression between the control-minus-treatment case count differences and egg count log differences and reports the coefficient of determination (R²) describing how well the linear model explains the relationship between the two variables.
 ```
-python R2_csv.py GitHub_2026/2024_control-minus-treatment_vs_egg-counts.csv 
+python R2_csv.py 2024_control-minus-treatment_vs_egg-counts.csv 
 R² = 0.8508
 ```
 
