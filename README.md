@@ -2,7 +2,7 @@
 
 
 
-## treatment_control_case_counts.py
+## Spatial assignment of cases to treatment and control zones
 Counts human cases occurring within 650 meters of treatment and control sites over a specified time window, assigns each case to the nearest zone and reports treatment and control case counts, their difference and the total number of cases.
 
 ```
@@ -42,7 +42,7 @@ This script analyses the weekly exposure time series produced by the Monte Carlo
 python Peak_detection.py
 ```
 
-## poisson_rate_ratio_test.py
+## Poisson rate ratio test
 Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and its 95% confidence interval.
 
 ```
@@ -64,7 +64,7 @@ IRR (treat/control):      0.166667
 ====================================================
 ```
 
-## linear_regression_r2.py
+## Regression of case-count differences on log egg-count differences
 Fits a simple linear regression between the control-minus-treatment case count differences and egg count log differences and reports the coefficient of determination (R²) describing how well the linear model explains the relationship between the two variables.
 ```
 python R2_csv.py 2024_control-minus-treatment_vs_egg-counts.csv 
