@@ -16,6 +16,14 @@ statsmodels==0.14.6
 tqdm==4.65.0
 ```
 
+## Make mapping plot (Fig. 1A):
+```
+python Fig_1_v7.py
+This requires the ESRI shapefile format files from the Australian Bureau of Statistics (update line 94 with path to these files):
+https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&1270055001_mb_2011_vic_shape.zip&1270.0.55.001&Data%20Cubes&85F5B2ED8E3DC957CA257801000CA953&0&July%202011&23.12.2010&Latest
+
+```
+
 ## Spatial assignment of cases to treatment and control zones
 Counts human cases occurring within 650 meters of treatment and control sites over a specified time window (defined in UNIX time), assigns each case to the nearest zone and reports treatment and control case counts and the control minus treatment counts.
 
