@@ -11,7 +11,7 @@ pandas==2.2.3
 pyfixest==0.40.1
 scipy==1.11.4
 seaborn==0.12.2
-sklearn==1.1.2
+scikit-learn==1.1.2
 statsmodels==0.14.6
 tqdm==4.65.0
 ```
