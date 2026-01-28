@@ -71,5 +71,9 @@ python R2_csv.py 2024_control-minus-treatment_vs_egg-counts.csv
 R² = 0.8508
 ```
 
+## Compare imputed egg counts with actual 2022 egg counts
+```
+python Comparing_imputed_vs_2022_mozzie_data.py
+```
 
 
