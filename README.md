@@ -1,6 +1,20 @@
 # buruli-ulcer-mosquito-control-intervention
 
-
+# Dependencies:
+```
+epiweeks==2.3.0
+geopy==2.4.0
+joblib==1.2.0
+matplotlib==3.7.1
+numpy==1.26.4
+pandas==2.2.3
+pyfixest==0.40.1
+scipy==1.11.4
+seaborn==0.12.2
+sklearn==1.1.2
+statsmodels==0.14.6
+tqdm==4.65.0
+```
 
 ## Spatial assignment of cases to treatment and control zones
 Counts human cases occurring within 650 meters of treatment and control sites over a specified time window, assigns each case to the nearest zone and reports treatment and control case counts, their difference and the total number of cases.
