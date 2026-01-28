@@ -72,8 +72,9 @@ R² = 0.8508
 ```
 
 ## Compare imputed egg counts with actual 2022 egg counts
+Fits a simple linear regression comparing imputed log egg-count differences from the 2024 intervention with log egg-count differences measured during an In2Care intervention conducted in 2022.
 ```
-python Comparing_imputed_vs_2022_mozzie_data.py
+python Comparing_imputed_vs_2022_mozzie_data.py Comparing_imputed_vs_2022_mozzie_data.csv
 ```
 
 
