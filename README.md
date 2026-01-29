@@ -1,6 +1,6 @@
 # buruli-ulcer-mosquito-control-intervention
 
-# Dependencies:
+## Dependencies:
 ```
 epiweeks==2.3.0
 geopy==2.4.0
