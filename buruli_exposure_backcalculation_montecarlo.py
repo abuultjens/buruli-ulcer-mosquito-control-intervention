@@ -2,7 +2,7 @@
 """
 Buruli ulcer intervention analysis (script version)
 
-This script reads a case line-list with symptom onset dates and a Treatment/Control label and a digitised incubation period 
+This script reads a case line-list with symptom onset dates and a Treatment/Control label and a digitised incubation period
 dataset (as min/max ranges) and then:
 1) builds an empirical incubation period distribution by sampling within ranges
 2) uses Monte Carlo sampling to infer likely exposure dates (onset - incubation)
@@ -22,8 +22,6 @@ Where:
     - 'min'
     - 'max'
 """
-
-
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -250,6 +248,15 @@ def plot_pdf_hist(samples, bins="auto", title="Histogram density of incubation p
     plt.title(title)
     plt.grid(True)
     plt.tight_layout()
+
+
+def plot_ecdf_on_ax(ax, samples, label="ECDF"):
+    """
+    Matplotlib-3.7-compatible ECDF plotting helper.
+    Replaces plt.ecdf / ax.ecdf which are only available in newer matplotlib versions.
+    """
+    x_sorted, F = build_ecdf(samples)
+    ax.step(x_sorted, F, where="post", label=label)
 
 
 # =============================================================================
@@ -499,7 +506,11 @@ cdf_0025 = gamma.cdf(x, a=shape_0025, loc=loc_0025, scale=scale_0025)
 plt.figure(figsize=(8, 5))
 plt.plot(x, cdf, linewidth=2, label="Gamma CDF")
 plt.fill_between(x, cdf_0025, cdf_0975, color="grey", alpha=0.3)
-plt.ecdf(samples, label="ECDF")
+
+# ---- REPLACEMENT FOR plt.ecdf(samples, ...) ----
+ax = plt.gca()
+plot_ecdf_on_ax(ax, samples, label="ECDF")
+
 plt.title("Empirical CDF vs Gamma CDF (bootstrap band)")
 plt.xlabel("Incubation period (days)")
 plt.ylabel("Cumulative probability")
@@ -609,7 +620,10 @@ ax1.legend(fontsize=8)
 
 ax2.plot(x, cdf, linewidth=2, label="Gamma CDF")
 ax2.fill_between(x, cdf_0025, cdf_0975, color="grey", alpha=0.3)
-ax2.ecdf(samples, label="ECDF")
+
+# ---- REPLACEMENT FOR ax2.ecdf(samples, ...) ----
+plot_ecdf_on_ax(ax2, samples, label="ECDF")
+
 ax2.text(
     0.5, 1.05, "Empirical CDF vs Gamma CDF",
     fontsize=10, weight="bold", ha="center", va="bottom", transform=ax2.transAxes
