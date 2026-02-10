@@ -87,7 +87,7 @@ def main(cases_file, treatment_sites_file, control_sites_file, start_unix, end_u
     print("Cases inside treatment zone:", treatment_case_count)
     print("Cases inside control zone:", control_case_count)
     print("Control-minus-treatment case count difference:", control_minus_treatment)
-    print("Total unique cases in window:", total_cases_in_window)
+    #print("Total unique cases in window:", total_cases_in_window)
     print("----------------------------------------------------")
 
 if __name__ == "__main__":
