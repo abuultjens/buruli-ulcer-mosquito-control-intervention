@@ -27,8 +27,6 @@ for LINE in $(seq 1 152); do
 	IN_C=`grep "Cases inside control zone" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
 	DIFF=`grep "Control-minus-treatment case count difference:" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
 	TOTAL=`grep "Total unique cases in window" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
-	
-	echo ${IN_T},${IN_C},${TOTAL}
 
 	echo "${START},${END},${START_DATE},${END_DATE},${EXP_DAY},${IN_T},${IN_C},${DIFF},${TOTAL}" >> ${OUTFILE}
 
