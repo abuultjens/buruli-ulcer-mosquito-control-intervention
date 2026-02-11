@@ -3,9 +3,7 @@
 #fofn-checker
 
 CASES=$1
-#2025_cases.csv
 DATES=$2
-#../2025_UNIX-start-end.csv
 OUTFILE=$3
 
 # generate random prefix for all tmp files
