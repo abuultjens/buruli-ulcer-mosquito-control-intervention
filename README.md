@@ -51,6 +51,13 @@ Control-minus-treatment case count difference: 5
 ----------------------------------------------------
 ```
 
+## Run spatial assignment of cases to treatment and control zones across sliding windows
+```
+sh run.sh 2023_cases.csv 2023_UNIX-start-end.csv 2023_report.csv
+sh run.sh 2024_cases.csv 2024_UNIX-start-end.csv 2024_report.csv
+sh run.sh 2025_cases.csv 2025_UNIX-start-end.csv 2025_report.csv
+```
+
 ## Buruli ulcer exposure reconstruction from symptom onset dates.
 Takes a case line list (symptom onset + Treatment/Control label) and a digitised incubation-period dataset (min/max ranges). It builds an empirical incubation distribution by sampling within ranges and uses Monte Carlo back-calculation (exposure = onset − incubation) to generate inferred exposure date distributions for treatment and control. Outputs include daily and weekly exposure time series, summary plots, a Gamma fit to the incubation distribution with a bootstrapped CDF band and a simple post-period Treatment/Control rate ratio with a Monte Carlo interval.
 ```
