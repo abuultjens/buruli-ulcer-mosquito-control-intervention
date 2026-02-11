@@ -100,8 +100,18 @@ builtins.print = lambda *a, **k: None
 # Randomness / reproducibility
 # =============================================================================
 
-# This RNG is used for the incubation-range sampling (the "empirical" distribution).
-rng = np.random.default_rng(42)
+# ---- Fixed seed for full reproducibility ----
+RANDOM_SEED = 176
+
+# If you want different results each run, uncomment this to use a time-based seed:
+# RANDOM_SEED = None  # (non-deterministic)
+
+# Make NumPy and Python's random reproducible (important because you use both)
+np.random.seed(RANDOM_SEED)
+random.seed(RANDOM_SEED)
+
+# This RNG is used for the incubation-range sampling and all Monte Carlo draws
+rng = np.random.default_rng(RANDOM_SEED)
 
 
 # =============================================================================
@@ -289,7 +299,8 @@ store_mu_treat = []
 store_mu_control = []
 store_irr = []
 
-rng = np.random.default_rng()
+# IMPORTANT: do NOT re-seed / recreate rng here, or you'll break reproducibility
+# rng = np.random.default_rng()  # <-- keep commented out on purpose
 
 for i in range(n_iter):
     draws_days = sample_from_empirical_quantile(samples, n=len(table_S2), u=None, rng=rng)
