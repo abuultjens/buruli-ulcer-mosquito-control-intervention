@@ -52,6 +52,7 @@ Control-minus-treatment case count difference: 5
 ```
 
 #### Run spatial assignment of cases to treatment and control zones across sliding windows
+A wrapper Bash script is included to automate running 650m_zone_counts.py across all 136 exposure days (136 IQR windows) for each year.
 ```
 sh run.sh 2023_cases.csv 2023_UNIX-start-end.csv 2023_report.csv
 sh run.sh 2024_cases.csv 2024_UNIX-start-end.csv 2024_report.csv
