@@ -31,3 +31,6 @@ for LINE in $(seq 1 152); do
 	echo "${START},${END},${START_DATE},${END_DATE},${EXP_DAY},${IN_T},${IN_C},${DIFF},${TOTAL}" >> ${OUTFILE}
 
 done
+
+rm ${RAND}_tmp.csv
+
