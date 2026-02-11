@@ -14,7 +14,7 @@ RAND_2=`echo $((100 + RANDOM % 200))`
 RAND_3=`echo $((200 + RANDOM % 300))`
 RAND=`echo "${RAND_1}${RAND_2}${RAND_3}"`
 
-echo "START_unix_time,END_unix_time,START_date,END_date,Exposure day (4.5 months before window center),Cases in treatment zone,Cases in control zone,Control minus treatment,TOTAL cases,IRR,95% CI LOWER,95% CI UPPER,PVAL" > ${OUTFILE}
+echo "START_unix_time,END_unix_time,START_date,END_date,Exposure day (4.5 months before window center),Cases in treatment zone,Cases in control zone,Control minus treatment,TOTAL cases" > ${OUTFILE}
 
 
 for LINE in $(seq 1 152); do
@@ -35,14 +35,7 @@ for LINE in $(seq 1 152); do
 	
 	echo ${IN_T},${IN_C},${TOTAL}
 
-	python PRT.py ${IN_T} ${IN_C} > ${RAND}_tmp.csv
-	LRT=`grep "LRT statistic" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
-	PVAL=`grep "Two-sided p-value" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
-	IRR=`grep "IRR (treat/control)" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' '`
-	LOWER=`grep "95% CI for IRR (score)" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' ' | tr -d '(' | tr -d ')' | tr ',' '-' | cut -f 1 -d '-'`
-	UPPER=`grep "95% CI for IRR (score)" ${RAND}_tmp.csv | cut -f 2 -d ':' | tr -d ' ' | tr -d '(' | tr -d ')' | tr ',' '-' | cut -f 2 -d '-'`
-
-	echo "${START},${END},${START_DATE},${END_DATE},${EXP_DAY},${IN_T},${IN_C},${DIFF},${TOTAL},${IRR},${LOWER},${UPPER},${PVAL}" >> ${OUTFILE}
+	echo "${START},${END},${START_DATE},${END_DATE},${EXP_DAY},${IN_T},${IN_C},${DIFF},${TOTAL}" >> ${OUTFILE}
 
 done
 
