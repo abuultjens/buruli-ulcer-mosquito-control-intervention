@@ -16,6 +16,29 @@ statsmodels==0.14.6
 tqdm==4.65.0
 ```
 
+#### Installing dependencies with conda and pip:
+```
+conda create -n new_env python=3.10 -c conda-forge
+conda activate new_env
+
+conda install -c conda-forge \
+  epiweeks==2.3.0 \
+  geopy==2.4.0 \
+  joblib==1.2.0 \
+  matplotlib==3.7.1 \
+  numpy==1.26.4 \
+  pandas==2.2.3 \
+  scipy==1.11.4 \
+  seaborn==0.12.2 \
+  scikit-learn==1.1.2 \
+  statsmodels==0.14.6 \
+  tqdm==4.65.0
+
+conda install -c conda-forge pip setuptools wheel
+conda install -c conda-forge numba llvmlite
+pip install --no-build-isolation pyfixest==0.40.1
+```
+
 ## Make mapping plot (Fig. 1A):
 ```
 python Fig_1_v7.py
