@@ -71,8 +71,7 @@ def detect_peaks_max_only(df, ignore_year=None):
             "Year": year,
             "Peak_Week": int(row["Week"]),
             "Peak_WeekNum": int(row["WeekNum"]),
-            "Peak_Count": float(row["smoothed"]),
-            "Method": "MaxValue"
+            "Peak_Count": float(row["smoothed"])
         })
 
     return pd.DataFrame(results)
