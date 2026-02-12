@@ -66,6 +66,7 @@ Control_lat_lon.csv \
 1719756000 \
 1725804000
 
+# expected output:
 Counts:
 ----------------------------------------------------
 Cases inside treatment zone: 1
@@ -75,7 +76,7 @@ Control-minus-treatment case count difference: 5
 ```
 
 #### Run spatial assignment of cases to treatment and control zones across sliding windows
-A wrapper Bash script is included to automate running 650m_zone_counts.py across all 136 exposure days (136 IQR windows) for each year.
+A wrapper Bash script is included to automate running 650m_zone_counts.py across all 136 exposure days (136 IQR windows) for each year [this is to reporduce the data in Table_S6].
 ```
 sh run.sh 2023_cases.csv 2023_UNIX-start-end.csv 2023_report.csv
 sh run.sh 2024_cases.csv 2024_UNIX-start-end.csv 2024_report.csv
@@ -95,14 +96,15 @@ python Peak_detection.py
 ```
 
 ## Poisson rate ratio test
-Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and the 95% confidence interval.
+Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and the 95% confidence interval [this is to reporduce the data in Table_S6].
 
 ```
 python PRT.py [number_of_cases_in_treatment] [number_of_cases_in_control]
 
-# example
+# example:
 python PRT.py 1 6
 
+# expected output:
 === Two-sided Poisson Likelihood-Ratio Test (LRT) ===
 LRT statistic (D):        3.962432
 Two-sided p-value:        0.046526
@@ -119,7 +121,10 @@ IRR (treat/control):      0.166667
 ## Regression of case-count differences on log egg-count differences
 Fits a simple linear regression between the control-minus-treatment case count differences and egg count log differences and reports the coefficient of determination (R²) describing how well the linear model explains the relationship between the two variables.
 ```
-python R2_csv.py 2024_control-minus-treatment_vs_egg-counts.csv 
+# usage:
+python R2_csv.py 2024_control-minus-treatment_vs_egg-counts.csv
+
+# expected output:
 R² = 0.8508
 ```
 
