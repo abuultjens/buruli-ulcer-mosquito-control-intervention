@@ -1,5 +1,7 @@
 # buruli-ulcer-mosquito-control-intervention
 
+Testing was performed on an Apple M1 Pro-based MacBook Pro (16 GB RAM) running macOS 15.5, and on a remote Red Hat Enterprise Linux 8.10 server (Intel Xeon E5-2699 v3, 72 threads, 377 GiB RAM).
+
 ## Dependencies:
 ```
 epiweeks==2.3.0
