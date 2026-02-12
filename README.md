@@ -51,6 +51,7 @@ https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&1270055001_mb_2011_
 Counts human cases occurring within 650 meters of treatment and control sites over a specified time window (defined in UNIX time), assigns each case to the nearest zone and reports treatment and control case counts and the control minus treatment counts.
 
 ```
+# usage:
 python 650m_zone_counts.py \
 [cases_csv_file] \
 Treatment_lat_lon.csv \
@@ -92,13 +93,32 @@ python buruli_exposure_backcalculation_montecarlo.py cases.csv Digitalization_IP
 ## Peak detection for treatment and control groups
 Analyses the weekly exposure time series produced by the Monte Carlo back-calculation (BU_time_series_export.csv) to estimate the timing of seasonal peaks in treatment and control arms. For each arm and year, it applies a centred rolling mean to smooth weekly counts and defines the peak as the week with the maximum smoothed value.
 ```
+# usage:
 python Peak_detection.py
+
+# expected output:
+Detected Peaks (Maximum Smoothed Value Only):
+       Group  Year  Peak_Week  Peak_WeekNum  Peak_Count
+0    Control  2023     202301             1    0.002309
+1    Control  2024     202401             1    0.005219
+2    Control  2025     202501             1    0.004898
+3  Treatment  2023     202301             1    0.004638
+4  Treatment  2024     202405             5    0.004671
+5  Treatment  2025     202501             1    0.003645
+
+Timing differences (days):
+        Control  Treatment  Difference_Days_Treat_minus_Control
+Year                                                           
+2023 2023-01-02 2023-01-02                                    0
+2024 2024-01-01 2024-01-29                                   28
+2025 2024-12-30 2024-12-30                                    0
 ```
 
 ## Poisson rate ratio test
 Takes treatment and control case counts, runs a two-sided Poisson likelihood-ratio test to compare their rates and prints the LRT statistic, p-value, incidence rate ratio (IRR) and the 95% confidence interval [this is to reporduce the data in Table_S6].
 
 ```
+# usage:
 python PRT.py [number_of_cases_in_treatment] [number_of_cases_in_control]
 
 # example:
