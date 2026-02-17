@@ -1,9 +1,9 @@
 # buruli-ulcer-mosquito-control-intervention
 
-### Buruli ulcer notifications in Melbourne's Inner northwest by year:
-2023: 48
-2024: 66
-2025: 74
+### Buruli ulcer notifications by year in Melbourne's Inner northwest:
+2023: 48   
+2024: 66   
+2025: 74   
 
 ## Dependencies:
 ```
